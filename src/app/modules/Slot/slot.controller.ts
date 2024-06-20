@@ -59,9 +59,11 @@ const createSlot: RequestHandler = async (req, res, next) => {
   }
 };
 const getAllSlot: RequestHandler = async (req, res, next) => {
+ 
+  
   try {
     //will call service func to send this data
-    const result = await SlotServer.getAllSlotFromDB();
+    const result = await SlotServer.getAllSlotFromDB(req.query);
     //send response
     sendResponse(res, {
       statusCode: httpStatus.OK,

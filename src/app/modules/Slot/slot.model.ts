@@ -3,8 +3,9 @@ import { Tslot } from "./slot.interface";
 
 const slotSchema = new Schema<Tslot>({
     room:{
-        type:String,
-        required:true
+        type:Schema.Types.ObjectId,
+        required:true,
+        ref:'Room'
     },
     date:{
         type:String,
@@ -24,5 +25,10 @@ const slotSchema = new Schema<Tslot>({
         default:false
     },
 })
+
+// slotSchema.pre('find', async function (next) {
+//     this.find({ isBooked: false})
+//     next();
+//   });
 
 export const Slot = model<Tslot>('Slot',slotSchema)
