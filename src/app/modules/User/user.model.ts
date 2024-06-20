@@ -39,6 +39,16 @@ userSchema.pre('save', async function (next) {
   );
   next();
 });
+userSchema.pre('save', async function (next) {
+  const isEmailExists = await User.findOne({
+    email: this.email
+  });
+
+  if (isEmailExists) {
+    throw new Error('Email Already Registered');
+  }
+  next();
+});
 
 userSchema.post('save', function (doc: Partial<TUser>, next) {
   doc.password = undefined;

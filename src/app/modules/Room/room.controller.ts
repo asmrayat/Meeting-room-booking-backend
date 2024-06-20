@@ -4,6 +4,8 @@ import httpStatus from 'http-status';
 import sendResponse from '../../utils/sendResponse';
 
 const createRoom:RequestHandler = async (req, res,next) => {
+  console.log('test',req.user);
+  
   try {
     const roomData = req.body;
 

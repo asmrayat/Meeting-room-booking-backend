@@ -35,6 +35,22 @@ const getAllBooking: RequestHandler = async (req, res, next) => {
     next(error);
   }
 };
+const getUsersBooking: RequestHandler = async (req, res, next) => {
+  
+  try {
+    //will call service func to send this data
+    const result = await BookingService.getUserBookingFromDB(req.user.email);
+    //send response
+    sendResponse(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: 'User bookings retrieved successfully',
+      data: result,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
 const updateSingleBooking: RequestHandler = async (req, res, next) => {
   try {
     const { id } = req.params;
@@ -78,4 +94,5 @@ export const BookingControllers = {
   getAllBooking,
   updateSingleBooking,
   deleteSingleBooking,
+  getUsersBooking
 };

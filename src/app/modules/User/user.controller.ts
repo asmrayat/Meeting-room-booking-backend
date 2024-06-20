@@ -28,28 +28,8 @@ const createUser:RequestHandler = async (req, res, next) => {
     next(error);
   }
 };
-const loginUser:RequestHandler = async (req, res,next) => {
-  try {
-    const userData = req.body;
-    const email = userData.email;
-    const password = userData.password;
-
-    //will call service func to send this data
-    const result = await UserService.loginUserFromDB(email, password);
-    //send response
-    sendResponse(res,{
-      statusCode:httpStatus.OK,
-      success:true,
-      message:'User logged in successfully',
-      data:result
-    })
-    
-  } catch (error) {
-    next(error);
-  }
-};
 
 export const UserControllers = {
   createUser,
-  loginUser,
+ 
 };

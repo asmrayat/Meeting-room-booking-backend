@@ -8,6 +8,7 @@ import { SlotRoutes } from './app/modules/Slot/slot.route';
 import { BookingRoutes } from './app/modules/Booking/booking.route';
 import globalErrorHandler from './app/middlwares/globalErrorhandler';
 import notFound from './app/middlwares/notFound';
+import { LoginRouter } from './app/modules/Auth/auth.route';
 const app: Application = express();
 
 //parsers
@@ -16,6 +17,7 @@ app.use(cors());
 
 // application routes
 app.use('/api/auth/', UserRoutes);
+app.use('/api/auth/', LoginRouter);
 app.use('/api/', RoomRoutes);
 app.use('/api/', SlotRoutes);
 app.use('/api/', BookingRoutes);

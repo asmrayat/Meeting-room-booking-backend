@@ -1,7 +1,9 @@
+import { Types } from "mongoose";
+
 export type Tbooking={
-    room:string;
-    slots:string[];
-    user:string;
+    room:Types.ObjectId;
+    slots:Types.ObjectId[];
+    user:Types.ObjectId;
     date:string;
     totalAmount :number;
     isConfirmed: string;
