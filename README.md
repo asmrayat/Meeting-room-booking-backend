@@ -11,6 +11,9 @@ Backend service for managing meetings, rooms, and slots.
 - **JWT Authentication:** Secure endpoints with JSON Web Tokens.
 - **RESTful API:** Well-defined endpoints for managing meetings, rooms, and slots.
 
+### POSTMAN Documentation
+The URL: `https://documenter.getpostman.com/view/28818241/2sA3XWbdhu#825b3b10-df2a-4278-ae82-d45dbd394f21`
+
 ## 🚀 Getting Started
 
 1. **Clone the Repository:**
@@ -34,6 +37,12 @@ Backend service for managing meetings, rooms, and slots.
 4. **Run the Application:**
 
    npm start
+
+## 📝 Endpoints
+
+### API Base URL
+
+The base URL for all API endpoints is: `https://meeting-backend-one.vercel.app`
 
 ## 📝 Endpoints
 
