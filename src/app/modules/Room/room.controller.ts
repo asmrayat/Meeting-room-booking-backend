@@ -1,10 +1,10 @@
-import { NextFunction, Request, RequestHandler, Response } from 'express';
+import {  RequestHandler } from 'express';
 import { RoomService } from './room.server';
 import httpStatus from 'http-status';
 import sendResponse from '../../utils/sendResponse';
 
 const createRoom: RequestHandler = async (req, res, next) => {
-  console.log('test', req.user);
+  
 
   try {
     const roomData = req.body;

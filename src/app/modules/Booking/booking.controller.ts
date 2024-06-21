@@ -1,4 +1,4 @@
-import { NextFunction, Request, RequestHandler, Response } from 'express';
+import { RequestHandler } from 'express';
 import { BookingService } from './booking.server';
 import sendResponse from '../../utils/sendResponse';
 import httpStatus from 'http-status';
@@ -80,7 +80,7 @@ const updateSingleBooking: RequestHandler = async (req, res, next) => {
       bookingData,
     );
 
-    console.log(result);
+  
     
     //send response
     if (!result) {

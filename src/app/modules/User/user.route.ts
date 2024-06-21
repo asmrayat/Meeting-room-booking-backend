@@ -1,6 +1,5 @@
-import express, { NextFunction, Request, Response } from 'express';
+import express from 'express';
 import { UserControllers } from './user.controller';
-
 import { UserValidation } from './user.validation';
 import validateRequest from '../../middlwares/validateRequest';
 
@@ -9,9 +8,7 @@ const router = express.Router();
 
 
 //will call controller function
-router.post(
-  '/signup',
-  validateRequest(UserValidation.userValidationSchema),
+router.post('/signup',validateRequest(UserValidation.userValidationSchema),
   UserControllers.createUser,
 );
 

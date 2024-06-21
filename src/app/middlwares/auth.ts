@@ -2,7 +2,6 @@ import { NextFunction, Request, Response } from 'express';
 import jwt, { JwtPayload } from 'jsonwebtoken';
 import config from '../config';
 import { TUserRole } from '../modules/User/user.interface';
-import { log } from 'console';
 import httpStatus from 'http-status';
 import sendResponse from '../utils/sendResponse';
 

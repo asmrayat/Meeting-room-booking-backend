@@ -1,4 +1,4 @@
-import { NextFunction, Request, RequestHandler, Response } from 'express';
+import { RequestHandler } from 'express';
 import { SlotServer } from './slot.server';
 import httpStatus from 'http-status';
 import sendResponse from '../../utils/sendResponse';

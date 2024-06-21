@@ -1,6 +1,5 @@
-import { NextFunction, Request, RequestHandler, Response } from 'express';
+import { RequestHandler } from 'express';
 import { UserService } from './user.service';
-import { UserValidation } from './user.validation';
 import sendResponse from '../../utils/sendResponse';
 import httpStatus from 'http-status';
 
@@ -8,11 +7,8 @@ const createUser:RequestHandler = async (req, res, next) => {
   try {
     const userData = req.body;
 
-    // const zodParsedData = UserValidation.userValidationSchema.parse(userData);
-
-    //will call service func to send this data
     const result = await UserService.createUserIntoDB(userData);
-    //send response
+
     sendResponse(res,{
       statusCode:httpStatus.OK,
       success:true,
