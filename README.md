@@ -1,6 +1,5 @@
 # Meeting Backend 📅
 
-[![Node.js CI](https://github.com/your-username/meeting-backend/actions/workflows/node.js.yml/badge.svg)](https://github.com/your-username/meeting-backend/actions/workflows/node.js.yml)
 
 Backend service for managing meetings, rooms, and slots.
 
@@ -38,9 +37,7 @@ The URL: `https://documenter.getpostman.com/view/28818241/2sA3XWbdhu#825b3b10-df
 
    npm start
 
-## 📝 Endpoints
-
-### API Base URL
+## API Base URL
 
 The base URL for all API endpoints is: `https://meeting-backend-one.vercel.app`
 
