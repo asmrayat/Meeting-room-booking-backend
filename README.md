@@ -159,11 +159,6 @@ Backend service for managing meetings, rooms, and slots.
     }
     ```
 
-- **GET /api/slots/:id**
-  - **Endpoint:** [https://meeting-backend-one.vercel.app/api/slots/:id](https://meeting-backend-one.vercel.app/api/slots/:id)
-  - **Description:** Retrieve a specific slot by its ID.
-
-
 - **GET /api/slots/availability**
   - **Endpoint:** [https://meeting-backend-one.vercel.app/api/slots/availability](https://meeting-backend-one.vercel.app/api/slots/availability)
   - **Description:** Check slot availability .
