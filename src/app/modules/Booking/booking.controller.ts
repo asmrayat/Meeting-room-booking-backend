@@ -25,12 +25,22 @@ const getAllBooking: RequestHandler = async (req, res, next) => {
     //will call service func to send this data
     const result = await BookingService.getAllBookingFromDB();
     //send response
-    sendResponse(res, {
-      statusCode: httpStatus.OK,
-      success: true,
-      message: 'All bookings retrieved successfully',
-      data: result,
-    });
+    if (result.length <= 0) {
+      sendResponse(res, {
+        statusCode: httpStatus.NOT_FOUND,
+        success: false,
+        message: 'No Data Found',
+        data: result,
+      });
+    } else {
+      sendResponse(res, {
+        statusCode: httpStatus.OK,
+        success: true,
+        message: 'All bookings retrieved successfully',
+        data: result,
+      });
+    }
+    
   } catch (error) {
     next(error);
   }
@@ -41,6 +51,14 @@ const getUsersBooking: RequestHandler = async (req, res, next) => {
     //will call service func to send this data
     const result = await BookingService.getUserBookingFromDB(req.user.email);
     //send response
+    if (!result) {
+      return sendResponse(res, {
+        statusCode: httpStatus.NOT_FOUND,
+        success: false,
+        message: 'No Data Found',
+        data: [],
+      });
+    }
     sendResponse(res, {
       statusCode: httpStatus.OK,
       success: true,
@@ -61,7 +79,18 @@ const updateSingleBooking: RequestHandler = async (req, res, next) => {
       id,
       bookingData,
     );
+
+    console.log(result);
+    
     //send response
+    if (!result) {
+      return sendResponse(res, {
+        statusCode: httpStatus.NOT_FOUND,
+        success: false,
+        message: 'No Data Found',
+        data: [],
+      });
+    }
     sendResponse(res, {
       statusCode: httpStatus.OK,
       success: true,
@@ -78,10 +107,18 @@ const deleteSingleBooking: RequestHandler = async (req, res, next) => {
     //will call service func to send this data
     const result = await BookingService.deleteSingleBookingFromDB(id);
     //send response
+    if (!result) {
+      return sendResponse(res, {
+        statusCode: httpStatus.NOT_FOUND,
+        success: false,
+        message: 'No Data Found',
+        data: [],
+      });
+    }
     sendResponse(res, {
       statusCode: httpStatus.OK,
       success: true,
-      message: 'user is created successfully',
+      message: 'Booking deleted successfully',
       data: result,
     });
   } catch (error) {

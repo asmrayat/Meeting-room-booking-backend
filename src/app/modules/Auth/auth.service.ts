@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
+import { log } from 'console';
 import config from '../../config';
 import { User } from '../User/user.model';
 import { TLoginUser } from './auth.interface';
@@ -8,12 +9,8 @@ import jwt from 'jsonwebtoken';
 const loginUser = async (loginData: TLoginUser) => {
   const isUserExists = await User.findOne({ email: loginData?.email });
 
-
   if (isUserExists) {
-    const isPasswordMatch = await bcrypt.compare(
-      loginData?.password,
-      isUserExists?.password,
-    );
+    await bcrypt.compare(loginData?.password, isUserExists?.password);
     // console.log(loginData?.password,isUserExists?.password);
   }
 

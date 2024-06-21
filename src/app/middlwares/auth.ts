@@ -3,11 +3,15 @@ import jwt, { JwtPayload } from 'jsonwebtoken';
 import config from '../config';
 import { TUserRole } from '../modules/User/user.interface';
 import { log } from 'console';
+import httpStatus from 'http-status';
+import sendResponse from '../utils/sendResponse';
 
-const auth = (...requiredRoles:TUserRole[]) => {
+const auth = (...requiredRoles: TUserRole[]) => {
   return async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const token = req.headers.authorization;
+      const getToken = req.headers.authorization;
+      const token = getToken?.split(' ')[1];
+
       if (!token) {
         throw new Error('Token is missing');
       }
@@ -16,25 +20,28 @@ const auth = (...requiredRoles:TUserRole[]) => {
         token,
         config.jwt_access_secret as string,
         function (err, decoded) {
-
-        
-          
           // err
           if (err) {
-            throw new Error('Token is not valid');
+            sendResponse(res, {
+              statusCode: httpStatus.UNAUTHORIZED,
+              success: false,
+              message: 'You have no access to this route',
+            });
           }
           // decoded undefined
-          const role = (decoded as JwtPayload).role      
-          
-          if(requiredRoles && ! requiredRoles.includes(role)){
-            throw new Error('Your Role is not valid');
+          const role = (decoded as JwtPayload).role;
+
+          if (requiredRoles && !requiredRoles.includes(role)) {
+            sendResponse(res, {
+              statusCode: httpStatus.UNAUTHORIZED,
+              success: false,
+              message: 'You have no access to this route',
+            });
           }
           req.user = decoded as JwtPayload;
-           next();
+          next();
         },
       );
-
-      
     } catch (error) {
       next(error);
     }

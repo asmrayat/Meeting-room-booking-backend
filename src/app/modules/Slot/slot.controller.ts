@@ -65,12 +65,21 @@ const getAllSlot: RequestHandler = async (req, res, next) => {
     //will call service func to send this data
     const result = await SlotServer.getAllSlotFromDB(req.query);
     //send response
-    sendResponse(res, {
-      statusCode: httpStatus.OK,
-      success: true,
-      message: 'Available slots retrieved successfully',
-      data: result,
-    });
+    if (result.length <= 0) {
+      sendResponse(res, {
+        statusCode: httpStatus.NOT_FOUND,
+        success: false,
+        message: 'No Data Found',
+        data: result,
+      });
+    } else {
+      sendResponse(res, {
+        statusCode: httpStatus.OK,
+        success: true,
+        message: 'Available slots retrieved successfully',
+        data: result,
+      });
+    }
   } catch (error) {
     next(error);
   }

@@ -12,12 +12,12 @@ const createBookingIntoDB = async (bookingData: Tbooking) => {
     await Slot.findOneAndUpdate({ _id: slot }, { isBooked: true }, { new: true });
     
   }
-  return (await (await result.populate('user')).populate('slots')).populate('room');
+  return (await (await result.populate('user','-password')).populate('slots')).populate('room');
  
 };
 
 const getAllBookingFromDB = async () => {
-  const result = await Booking.find().populate('user').populate('slots').populate('room');
+  const result = await Booking.find().populate('user','-password').populate('slots').populate('room');
   return result;
 };
 const getUserBookingFromDB = async (email: string) => {  
