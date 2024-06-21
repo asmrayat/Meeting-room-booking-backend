@@ -147,10 +147,6 @@ Backend service for managing meetings, rooms, and slots.
 
 ### Slots
 
-- **GET /api/slots**
-  - **Endpoint:** [https://meeting-backend-one.vercel.app/api/slots](https://meeting-backend-one.vercel.app/api/slots)
-  - **Description:** Retrieve all slots.
-
 - **POST /api/slots**
   - **Endpoint:** [https://meeting-backend-one.vercel.app/api/slots](https://meeting-backend-one.vercel.app/api/slots)
   - **Description:** Create a new slot.
@@ -167,25 +163,15 @@ Backend service for managing meetings, rooms, and slots.
   - **Endpoint:** [https://meeting-backend-one.vercel.app/api/slots/:id](https://meeting-backend-one.vercel.app/api/slots/:id)
   - **Description:** Retrieve a specific slot by its ID.
 
-- **PUT /api/slots/:id**
-  - **Endpoint:** [https://meeting-backend-one.vercel.app/api/slots/:id](https://meeting-backend-one.vercel.app/api/slots/:id)
-  - **Description:** Update an existing slot by its ID.
-  - **Request Body:**
-    ```json
-    {
-      "roomId": "updated-room-id",
-      "startTime": "2024-07-01T11:00:00Z",
-      "endTime": "2024-07-01T12:00:00Z"
-    }
-    ```
-
-- **DELETE /api/slots/:id**
-  - **Endpoint:** [https://meeting-backend-one.vercel.app/api/slots/:id](https://meeting-backend-one.vercel.app/api/slots/:id)
-  - **Description:** Delete a slot by its ID.
 
 - **GET /api/slots/availability**
   - **Endpoint:** [https://meeting-backend-one.vercel.app/api/slots/availability](https://meeting-backend-one.vercel.app/api/slots/availability)
+  - **Description:** Check slot availability .
+  
+      
+ - **GET /api/slots/availability**
+  - **Endpoint:** [https://meeting-backend-one.vercel.app/api/slots/availability?data=(data)&roomId=(room object id)](https://meeting-backend-one.vercel.app/api/slots/availability?date=2024-06-15&roomId=6675e071bf073d54c775a3c0)
   - **Description:** Check slot availability for a specific date and room.
   - **Query Parameters:**
     - `date`: The date to check availability (e.g., 2024-06-15)
-    - `roomId`: The ID of the room (e.g., 6675e071bf073d54c775a3c0)
+    - `roomId`: The ID of the room (e.g., 6675e071bf073d54c775a3c0)     
